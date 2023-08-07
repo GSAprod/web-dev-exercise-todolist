@@ -1,0 +1,18 @@
+{
+  "name": "udemy-web-dev-todolist",
+  "version": "1.0.0",
+  "description": "A concept of a todo list app for registering common tasks, with a couple of lists for different types of tasks. This project is based on a capstone project from Udemy's \"The Complete 2023 Web Developer Bootcamp\", created by the App Brewery team.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js && exit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GSA prod.",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
