@@ -1,50 +1,61 @@
 import express from "express";
 import bodyparser from "body-parser";
 import { v4 as uuidv4 } from "uuid";
+import { todoLists } from "./initialdata.js";
 
 const app = express();
 const port = 3000;
 
 app.use(bodyparser.urlencoded({ "extended": true }));
 app.use(express.static("public"));
+app.use("/list", express.static("public"));
+app.use("/list/:listid", express.static("public"));
 
-
-const taskList = {
-    1: { "name": "clothes", "done": false },
-    2: { "name": "toys", "done": false },
-    3: { "name": "dvds", "done": true },
-    4: { "name": "technology", "done": false }
-}
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { taskList: taskList });
+  res.redirect("/list/0");
 });
 
-app.post("/add-task", (req, res) => {
+app.get("/list/:listid", (req, res) => {
+    let listId = req.params['listid'];
+
+    res.render("index.ejs", { listId: listId, listDetails: todoLists[listId] })
+})
+
+app.post("/list/:listid/add-task", (req, res) => {
+    let listId = req.params["listid"]
+    let list = todoLists[listId];
+
     let taskName = req.body["task-name"]
     let taskId = uuidv4();
 
-    while(taskList[taskId] != null) taskId = uuidv4();
-    taskList[taskId] = { "name": taskName, "done": false };
+    while(list.tasks[taskId] != null) taskId = uuidv4();
+    list.tasks[taskId] = { "name": taskName, "done": false };
 
-    res.redirect("/");
+    res.redirect(`/list/${listId}/`);
 })
 
-app.post("/toggle-task/:tasknum", (req, res) => {
+app.post("/list/:listid/toggle-task/:tasknum", (req, res) => {
+    let listId = req.params["listid"]
+    let list = todoLists[listId];
+
     let taskId = req.params["tasknum"];
-    taskList[taskId].done = !taskList[taskId].done;
-    res.redirect("/");
+
+    list.tasks[taskId].done = !list.tasks[taskId].done;
+    res.redirect(`/list/${listId}/`);
 })
 
-app.post("/delete-task/:tasknum", (req, res) => {
+app.post("/list/:listid/delete-task/:tasknum", (req, res) => {
+    let listId = req.params["listid"]
+
     let taskId = req.params["tasknum"];
-    delete taskList[taskId];
-    res.redirect("/");
+    delete todoLists[listId].tasks[taskId];
+    res.redirect(`/list/${listId}/`);
 })
 
 app.post("/update", (req, res) => {
 
-  res.redirect("/");
+  res.redirect(`/list/${listId}/`);
 });
 
 app.listen(port, () => {

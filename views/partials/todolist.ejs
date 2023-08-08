@@ -1,29 +1,33 @@
 <div class="tasks">
-    <% if (locals.taskList && taskList != {}) { %> <%
-    Object.keys(taskList).forEach(taskId => { %>
-    <div class="task-item-container">
-      <form action="/toggle-task/<%= taskId %>" method="post">
-        <% if (taskList[taskId].done) { %>
-        <input
-          type="checkbox"
-          name="<%= taskList[taskId].name %>"
-          id="<%= taskList[taskId].name %>"
-          onchange="this.form.submit()"
-          checked />
-        <% } else { %>
-        <input
-          type="checkbox"
-          name="<%= taskList[taskId].name %>"
-          id="<%= taskList[taskId].name %>"
-          onchange="this.form.submit()" />
-        <% } %>
-        <label for="task"><%= taskList[taskId].name %></label>
-      </form>
-      <form action="/delete-task/<%= taskId %>" method="post">
-        <input type="submit" value="Delete">  
-      </form>
-    </div>
-    <% }); %> <% } else { %>
-    <div>no tasks</div>
-    <% } %>
+  <% if (locals.listDetails && listDetails.tasks != {}) { %> <%
+  Object.keys(listDetails.tasks).forEach(taskId => { %>
+
+  <div class="task-item-container">
+    <form action="/list/<%= listId %>/toggle-task/<%= taskId %>" method="post">
+      <% if (listDetails.tasks[taskId].done) { %>
+      <input
+        type="checkbox"
+        name="<%= listDetails.tasks[taskId].name %>"
+        id="<%= listDetails.tasks[taskId].name %>"
+        onchange="this.form.submit()"
+        checked />
+
+      <% } else { %>
+      <input
+        type="checkbox"
+        name="<%= listDetails.tasks[taskId].name %>"
+        id="<%= listDetails.tasks[taskId].name %>"
+        onchange="this.form.submit()" />
+      <% } %>
+
+      <label for="task"><%= listDetails.tasks[taskId].name %></label>
+    </form>
+
+    <form action="/list/<%= listId %>/delete-task/<%= taskId %>" method="post">
+      <input type="submit" value="Delete" />
+    </form>
   </div>
+  <% }); %> <% } else { %>
+  <div>no tasks</div>
+  <% } %>
+</div>

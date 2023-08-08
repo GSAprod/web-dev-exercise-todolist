@@ -2,7 +2,7 @@
 
 <%- include("partials/todolist.ejs") %>
 
-<form action="/add-task" method="post">
+<form action="/list/<%= listId %>/add-task" method="post">
   <input type="text" name="task-name">
   <input type="submit" value="Add task">
 </form>
