@@ -1,0 +1,26 @@
+<div class="tasks">
+    <% if (locals.taskList && taskList != {}) { %> <%
+    Object.keys(taskList).forEach(taskId => { %>
+    <div class="task-item-container">
+      <form action="/toggle-task/<%= taskId %>" method="post">
+        <% if (taskList[taskId].done) { %>
+        <input
+          type="checkbox"
+          name="<%= taskList[taskId].name %>"
+          id="<%= taskList[taskId].name %>"
+          onchange="this.form.submit()"
+          checked />
+        <% } else { %>
+        <input
+          type="checkbox"
+          name="<%= taskList[taskId].name %>"
+          id="<%= taskList[taskId].name %>"
+          onchange="this.form.submit()" />
+        <% } %>
+        <label for="task"><%= taskList[taskId].name %></label>
+      </form>
+    </div>
+    <% }); %> <% } else { %>
+    <div>no tasks</div>
+    <% } %>
+  </div>

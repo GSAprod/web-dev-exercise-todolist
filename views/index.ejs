@@ -1,23 +1,10 @@
 <%- include("partials/header.ejs") %>
 
-<form action="/update" method="post">
-<div class="task-item-container">
-        <input type="checkbox" name="task" id="task">
-        <label for="task">Clothes</label>
-</div>
-<div class="task-item-container">
-    <input type="checkbox" name="task" id="task">
-    <label for="task">Clothes</label>
-</div>
-<div class="task-item-container">
-    <input type="checkbox" name="task" id="task">
-    <label for="task">Clothes</label>
-</div>
-<div class="task-item-container">
-    <input type="checkbox" name="task" id="task">
-    <label for="task">Clothes</label>
-</div>
-<input type="submit" value="Save">
+<%- include("partials/todolist.ejs") %>
+
+<form action="/add-task" method="post">
+  <input type="text" name="task-name">
+  <input type="submit" value="Add task">
 </form>
 
 <%- include("partials/footer.ejs") %>
