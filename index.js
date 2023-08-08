@@ -36,6 +36,12 @@ app.post("/toggle-task/:tasknum", (req, res) => {
     res.redirect("/");
 })
 
+app.post("/delete-task/:tasknum", (req, res) => {
+    let taskId = req.params["tasknum"];
+    delete taskList[taskId];
+    res.redirect("/");
+})
+
 app.post("/update", (req, res) => {
 
   res.redirect("/");

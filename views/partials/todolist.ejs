@@ -19,6 +19,9 @@
         <% } %>
         <label for="task"><%= taskList[taskId].name %></label>
       </form>
+      <form action="/delete-task/<%= taskId %>" method="post">
+        <input type="submit" value="Delete">  
+      </form>
     </div>
     <% }); %> <% } else { %>
     <div>no tasks</div>
