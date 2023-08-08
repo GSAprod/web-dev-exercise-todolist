@@ -9,7 +9,6 @@ const port = 3000;
 app.use(bodyparser.urlencoded({ "extended": true }));
 app.use(express.static("public"));
 app.use("/list", express.static("public"));
-app.use("/list/:listid", express.static("public"));
 
 
 app.get("/", (req, res) => {
@@ -32,7 +31,7 @@ app.post("/list/:listid/add-task", (req, res) => {
     while(list.tasks[taskId] != null) taskId = uuidv4();
     list.tasks[taskId] = { "name": taskName, "done": false };
 
-    res.redirect(`/list/${listId}/`);
+    res.redirect(`/list/${listId}`);
 })
 
 app.post("/list/:listid/toggle-task/:tasknum", (req, res) => {
@@ -42,7 +41,7 @@ app.post("/list/:listid/toggle-task/:tasknum", (req, res) => {
     let taskId = req.params["tasknum"];
 
     list.tasks[taskId].done = !list.tasks[taskId].done;
-    res.redirect(`/list/${listId}/`);
+    res.redirect(`/list/${listId}`);
 })
 
 app.post("/list/:listid/delete-task/:tasknum", (req, res) => {
@@ -50,12 +49,12 @@ app.post("/list/:listid/delete-task/:tasknum", (req, res) => {
 
     let taskId = req.params["tasknum"];
     delete todoLists[listId].tasks[taskId];
-    res.redirect(`/list/${listId}/`);
+    res.redirect(`/list/${listId}`);
 })
 
 app.post("/update", (req, res) => {
 
-  res.redirect(`/list/${listId}/`);
+  res.redirect(`/list/${listId}`);
 });
 
 app.listen(port, () => {

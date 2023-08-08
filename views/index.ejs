@@ -1,5 +1,7 @@
 <%- include("partials/header.ejs") %>
 
+<h1><%= listDetails.name %></h1>
+
 <%- include("partials/todolist.ejs") %>
 
 <form action="/list/<%= listId %>/add-task" method="post">

@@ -2,9 +2,10 @@
   <% if (locals.listDetails && listDetails.tasks != {}) { %> <%
   Object.keys(listDetails.tasks).forEach(taskId => { %>
 
+  <%# One task %>
   <div class="task-item-container">
     <form action="/list/<%= listId %>/toggle-task/<%= taskId %>" method="post">
-      <% if (listDetails.tasks[taskId].done) { %>
+      <% if (listDetails.tasks[taskId].done) { %> <%# Check the box depending on the task status %>
       <input
         type="checkbox"
         name="<%= listDetails.tasks[taskId].name %>"
@@ -23,6 +24,7 @@
       <label for="task"><%= listDetails.tasks[taskId].name %></label>
     </form>
 
+    <%# Delete button for the task %>
     <form action="/list/<%= listId %>/delete-task/<%= taskId %>" method="post">
       <input type="submit" value="Delete" />
     </form>
