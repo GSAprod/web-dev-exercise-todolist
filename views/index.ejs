@@ -1,5 +1,11 @@
 <%- include("partials/header.ejs") %>
 
+<ul>
+  <% listIndex.forEach((index) => { %>
+    <li><a href="/list/<%= index[0] %>"><%= index[1] %></a></li>
+  <% }); %>
+</ul>
+
 <h1><%= listDetails.name %></h1>
 
 <%- include("partials/todolist.ejs") %>

@@ -6,9 +6,19 @@ import { todoLists } from "./initialdata.js";
 const app = express();
 const port = 3000;
 
+const listIndex = []
+
 app.use(bodyparser.urlencoded({ "extended": true }));
 app.use(express.static("public"));
 app.use("/list", express.static("public"));
+
+function indexLists() {
+    Object.keys(todoLists).forEach((id) => {
+        listIndex.push([id, todoLists[id]['name']])
+    });
+}
+
+indexLists();
 
 
 app.get("/", (req, res) => {
@@ -17,8 +27,8 @@ app.get("/", (req, res) => {
 
 app.get("/list/:listid", (req, res) => {
     let listId = req.params['listid'];
-
-    res.render("index.ejs", { listId: listId, listDetails: todoLists[listId] })
+    console.log(listIndex)
+    res.render("index.ejs", { listId: listId, listDetails: todoLists[listId], listIndex: listIndex })
 })
 
 app.post("/list/:listid/add-task", (req, res) => {
