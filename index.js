@@ -27,6 +27,10 @@ app.get("/", (req, res) => {
 
 app.get("/list/:listid", (req, res) => {
     let listId = req.params['listid'];
+    if (todoLists[listId] === undefined) {
+      res.sendStatus(404);
+    }
+
     res.render("index.ejs", { listId: listId, listDetails: todoLists[listId], listIndex: listIndex })
 })
 
@@ -36,7 +40,6 @@ app.post("/add-list", (req, res) => {
 
     
     while (todoLists[listId] != null) listId = uuidv4();
-    console.log(`New list ${listName}, listId ${listId}`);
     todoLists[listId] = { "name": listName, "tasks": {} };
     listIndex.push([ listId, listName ]);
 
@@ -46,6 +49,10 @@ app.post("/add-list", (req, res) => {
 app.post("/list/:listid/add-task", (req, res) => {
     let listId = req.params["listid"]
     let list = todoLists[listId];
+
+    if(list === undefined) {
+      res.sendStatus(404);
+    }
 
     let taskName = req.body["task-name"]
     let taskId = uuidv4();
@@ -60,6 +67,10 @@ app.post("/list/:listid/toggle-task/:tasknum", (req, res) => {
     let listId = req.params["listid"]
     let list = todoLists[listId];
 
+    if(list === undefined) {
+      res.sendStatus(404);
+    }
+
     let taskId = req.params["tasknum"];
 
     list.tasks[taskId].done = !list.tasks[taskId].done;
@@ -68,6 +79,10 @@ app.post("/list/:listid/toggle-task/:tasknum", (req, res) => {
 
 app.post("/list/:listid/delete-task/:tasknum", (req, res) => {
     let listId = req.params["listid"]
+
+    if(todoLists[listId] === undefined) {
+      res.sendStatus(404);
+    }
 
     let taskId = req.params["tasknum"];
     delete todoLists[listId].tasks[taskId];

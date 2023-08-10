@@ -1,0 +1,16 @@
+<ul>
+  <% listIndex.forEach((index) => { %>
+  <li><a href="/list/<%= index[0] %>"><%= index[1] %></a></li>
+  <% }); %>
+  <li>
+    <form action="/add-list" method="post">
+      <input
+        type="text"
+        name="list-name"
+        id="newlistname"
+        value="sjdfdskfsdkfkjsdh"
+        hidden />
+      <button type="button" onclick="promptAddList();">+ Add list</button>
+    </form>
+  </li>
+</ul>
