@@ -27,8 +27,20 @@ app.get("/", (req, res) => {
 
 app.get("/list/:listid", (req, res) => {
     let listId = req.params['listid'];
-    console.log(listIndex)
     res.render("index.ejs", { listId: listId, listDetails: todoLists[listId], listIndex: listIndex })
+})
+
+app.post("/add-list", (req, res) => {
+    let listName = req.body["list-name"];
+    let listId = uuidv4();
+
+    
+    while (todoLists[listId] != null) listId = uuidv4();
+    console.log(`New list ${listName}, listId ${listId}`);
+    todoLists[listId] = { "name": listName, "tasks": {} };
+    listIndex.push([ listId, listName ]);
+
+    res.redirect(`/list/${listId}`);
 })
 
 app.post("/list/:listid/add-task", (req, res) => {
