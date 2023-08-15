@@ -10,7 +10,7 @@ body {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-image: url('../images/hexagons.png');
+    background-image: url('../images/interlaced.png');
     background-repeat: repeat;
 }
 
@@ -42,7 +42,7 @@ h2 {
     margin: 1em;
     border-radius: 0.7em;
     background-color: white;
-    box-shadow: 0 0 0.3em 0.1em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
 }
 
 .titlebar-left {
@@ -70,7 +70,30 @@ h2 {
     gap: 0.5em;
 }
 
+ul {
+    display: none;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
 .task-item-container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    padding: 1em;
+    background-color: white;
+}
+
+.task-delete {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.task-delete > svg {
+    stroke: rgba(0, 0, 0, 0.3);
 }
