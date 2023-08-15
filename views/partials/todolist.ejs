@@ -15,6 +15,7 @@
       <% } else { %>
       <input
         type="checkbox"
+        class="task-check"
         name="<%= listDetails.tasks[taskId].name %>"
         id="<%= listDetails.tasks[taskId].name %>"
         onchange="this.form.submit()" />
