@@ -1,3 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+html {
+    font-family: 'Inter', sans-serif;
+    --main-accent-color: #93a8ac;
+}
+
+body {
+    position: absolute;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/hexagons.png');
+    background-repeat: repeat;
+}
+
+button, input {
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    position: absolute;
+    z-index: -999;
+}
+
+.container {
+    padding: 0 1em;
+}
+
+.top-bar {
+    margin: 1em;
+    border-radius: 0.7em;
+    background-color: white;
+    box-shadow: 0 0 0.3em 0.1em rgba(0, 0, 0, 0.3);
+}
+
+.titlebar-left {
+    padding-top: 0.5em;
+    display: flex;
+    align-items: baseline;
+}
+
+.titlebar-icon {
+    align-self: flex-end;
+    margin-right: 0.5em;
+}
+
+.version-num {
+    margin-left: 0.3em;
+    margin-bottom: 0.1em;
+    font-size: small;
+    color: gray;
+}
+
+.list-title-container {
+    padding: 0.5em 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
 .task-item-container {
     display: flex;
     justify-content: space-between;
