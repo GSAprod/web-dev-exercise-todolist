@@ -82,6 +82,7 @@ h2 {
 }
 
 .listnav {
+    display: none;
     border-radius: 0.7em;
     background-color: white;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
@@ -101,6 +102,10 @@ h2 {
     display: flex;
     align-items: center;
     gap: 0.5em;
+}
+
+.list-visible {
+    display: block;
 }
 
 .add-list-btn {
@@ -199,4 +204,18 @@ h2 {
 
 .add-task-btn:hover > svg {
     fill: rgba(0, 0, 0, 1);
+}
+
+.no-tasks {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
