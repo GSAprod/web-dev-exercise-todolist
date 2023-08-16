@@ -39,11 +39,13 @@ h2 {
 }
 
 .top-bar {
-    margin: 1em;
     border-radius: 0.7em;
     background-color: white;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
-    position: relative;
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    right: 1em;
     z-index: 2;
 }
 
@@ -80,6 +82,8 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+    margin-top: 7em;
+    margin-bottom: 6em;
 }
 
 .task-item-container {
@@ -112,7 +116,11 @@ ul {
 .add-task-container {
     display: flex;
     gap: 0.2em;
-    position: relative;
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    width: inherit;
     padding: 1em;
     border-radius: 0.7em;
     background-color: white;
