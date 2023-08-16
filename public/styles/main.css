@@ -43,6 +43,8 @@ h2 {
     border-radius: 0.7em;
     background-color: white;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
 }
 
 .titlebar-left {
@@ -101,4 +103,46 @@ ul {
 
 .task-delete > svg {
     stroke: rgba(0, 0, 0, 0.3);
+}
+
+.task-delete:hover > svg {
+    stroke: rgba(0, 0, 0, 0.7);
+}
+
+.add-task-container {
+    display: flex;
+    gap: 0.2em;
+    position: relative;
+    padding: 1em;
+    border-radius: 0.7em;
+    background-color: white;
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.add-task-container > form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new-task-name {
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.add-task-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.add-task-btn > svg {
+    fill: rgba(0, 0, 0, 0.5);
+}
+
+.add-task-btn:hover > svg {
+    fill: rgba(0, 0, 0, 1);
 }
