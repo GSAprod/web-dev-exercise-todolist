@@ -282,7 +282,7 @@ h2 {
   }
 
   .listnav {
-    display: block;
+    display: block !important;
     position: initial;
     background: none;
     padding: 0;
