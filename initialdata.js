@@ -1,20 +1,18 @@
-export const homeTaskList = {
-    '1': { "name": "clothes", "done": false },
-    '2': { "name": "toys", "done": false },
-    '3': { "name": "dvds", "done": true },
-    '4': { "name": "technology", "done": false }
-}
-
 export const todoLists = {
     '0': {
         "name": "Home",
-        "tasks": homeTaskList
+        "tasks": {
+            '1': { "name": "Pick up dry clothes", "done": false },
+            '2': { "name": "Prep dinner", "done": false },
+            '3': { "name": "Buy bread", "done": true },
+            '4': { "name": "Mow the lawn", "done": false }
+        }
     },
     '1': {
-        "name": "work",
+        "name": "Work",
         "tasks": {
-            3: {"name": "PC", "done": true },
-            5: {"name": "Lang", "done": false}
+            '1': {"name": "Brainstorm naming ideas", "done": true },
+            '2': {"name": "Review research results", "done": false}
         }
     }
 }
