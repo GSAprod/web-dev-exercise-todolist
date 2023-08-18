@@ -1,221 +1,326 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 html {
-    font-family: 'Inter', sans-serif;
-    --main-accent-color: #93a8ac;
+  font-family: "Inter", sans-serif;
+  --main-accent-color: #93a8ac;
 }
 
 body {
-    position: absolute;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    background-image: url('../images/interlaced.png');
-    background-repeat: repeat;
+  position: absolute;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-image: url("../images/interlaced.png");
+  background-repeat: repeat;
 }
 
-button, input {
-    font-family: 'Inter', sans-serif;
+button,
+input {
+  font-family: "Inter", sans-serif;
 }
 
 h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
 }
 
 h2 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .background {
-    position: absolute;
-    z-index: -999;
+  position: absolute;
+  z-index: -999;
 }
 
 .container {
-    padding: 0 1em;
+  padding: 0 1em;
 }
 
 .top-bar {
-    border-radius: 0.7em;
-    background-color: white;
-    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
-    position: fixed;
-    top: 1em;
-    left: 1em;
-    right: 1em;
-    z-index: 2;
+  border-radius: 0.7em;
+  background-color: white;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  z-index: 2;
 }
 
 .titlebar-left {
-    padding-top: 0.5em;
-    display: flex;
-    align-items: baseline;
+  padding-top: 0.5em;
+  display: flex;
+  align-items: baseline;
 }
 
 .titlebar-icon {
-    align-self: flex-end;
-    margin-right: 0.5em;
+  align-self: flex-end;
+  margin-right: 0.5em;
 }
 
 .version-num {
-    margin-left: 0.3em;
-    margin-bottom: 0.1em;
-    font-size: small;
-    color: gray;
+  margin-left: 0.3em;
+  margin-bottom: 0.1em;
+  font-size: small;
+  color: gray;
 }
 
 .list-title-container {
-    margin: 0.5em 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    cursor: pointer;
-    border-radius: 0.4em;
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  border-radius: 0.4em;
 }
 
 .list-title-container:hover {
-    transition-duration: 0.3s;
-    background-color: #ddd;
+  transition-duration: 0.3s;
+  background-color: #ddd;
 }
 
 .listnav {
-    display: none;
-    border-radius: 0.7em;
-    background-color: white;
-    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
-    position: fixed;
-    top: 6em;
-    left: 1em;
-    right: 1em;
-    z-index: 2;
-    list-style: none;
-    padding: 1em;
+  display: none;
+  border-radius: 0.7em;
+  background-color: white;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 6em;
+  left: 1em;
+  right: 1em;
+  z-index: 2;
+  list-style: none;
+  padding: 1em;
 }
 
 .listnav li a {
-    border-radius: 0.3em;
-    color: black;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+  border-radius: 0.3em;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .list-visible {
-    display: block;
+  display: block;
 }
 
 .add-list-btn {
-    border: none;
-    border-radius: 0.3em;
-    background: none;
-    text-align: left;
-    font-size: 1rem;
-    color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    cursor: pointer;
-    
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0;
+  border: none;
+  border-radius: 0.3em;
+  background: none;
+  text-align: left;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0;
 }
 
-.listnav li:hover a, .add-list-btn:hover {
-    transition-duration: 0.3s;
-    background-color: #ddd;
+.listnav li:hover a,
+.add-list-btn:hover {
+  transition-duration: 0.3s;
+  background-color: #ddd;
+}
+
+.listnav .selected-list {
+  font-weight: bold;
 }
 
 .tasks {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    margin-top: 7em;
-    margin-bottom: 6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: 7em;
+  margin-bottom: 6em;
+}
+
+.desktop-listname {
+  display: none;
 }
 
 .task-item-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em;
-    background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  background-color: white;
 }
 
 .task-check {
-    /* TODO: See how to make custom checkbox: https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
-    background-color: #93a8ac;
+  /* TODO: See how to make custom checkbox: https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
+  background-color: #93a8ac;
 }
 
 .task-delete {
-    border: none;
-    background: none;
-    cursor: pointer;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .task-delete > svg {
-    stroke: rgba(0, 0, 0, 0.3);
+  stroke: rgba(0, 0, 0, 0.3);
 }
 
 .task-delete:hover > svg {
-    stroke: rgba(0, 0, 0, 0.7);
+  stroke: rgba(0, 0, 0, 0.7);
 }
 
 .add-task-container {
-    display: flex;
-    gap: 0.2em;
-    position: fixed;
-    bottom: 1em;
-    left: 1em;
-    right: 1em;
-    width: inherit;
-    padding: 1em;
-    border-radius: 0.7em;
-    background-color: white;
-    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
-    z-index: 2;
+  display: flex;
+  gap: 0.2em;
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  right: 1em;
+  width: inherit;
+  padding: 1em;
+  border-radius: 0.7em;
+  background-color: white;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
 .add-task-container > form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .new-task-name {
-    font-size: 1rem;
-    border: none;
-    outline: none;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  width: 90%;
+}
+
+.add-task-left {
+    flex-grow: 1;
 }
 
 .add-task-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .add-task-btn > svg {
-    fill: rgba(0, 0, 0, 0.5);
+  fill: rgba(0, 0, 0, 0.5);
 }
 
 .add-task-btn:hover > svg {
-    fill: rgba(0, 0, 0, 1);
+  fill: rgba(0, 0, 0, 1);
 }
 
 .no-tasks {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+@media screen and (min-width: 650px) {
+  .desktop-container {
     display: flex;
+  }
+
+  .top-bar,
+  .container {
+    position: initial;
+    flex-grow: 1;
+  }
+
+  .top-bar {
+    max-width: 18em;
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .top-bar-content {
+    position: sticky;
+    top: 0;
+  }
+
+  .titlebar-left {
+    margin-bottom: 2em;
+  }
+
+  .titlebar-left > svg {
+    width: 38px;
+    height: auto;
+  }
+
+  .titlebar-left > h1 {
+    font-size: 2em;
+  }
+
+  .titlebar-left > .version-num {
+    font-size: medium;
+  }
+
+  .list-title-container {
+    display: none;
+  }
+
+  .listnav {
+    display: block;
+    position: initial;
+    background: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .listnav .selected-list {
+    font-weight: normal;
+    background-color: #ccc;
+  }
+
+  .tasks-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: bold;
+  }
+
+  .tasks {
+    width: 100%;
+    max-width: 40em;
+    margin: 2em;
+    display: relative;
+  }
+
+  .desktop-listname {
+    display: initial;
+    padding-bottom: 0.5em;
+    font-size: 2rem;
+  }
+
+  .desktop-tasks {
+    position: relative;
+  }
+
+  .add-task-container {
+    position: sticky;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+  }
 }

@@ -1,7 +1,11 @@
 <ul class="listnav">
   <% listIndex.forEach((index) => { %>
   <li>
-    <a href="/list/<%= index[0] %>">
+    <% if (listDetails.name === index[1]) { %>
+      <a href="/list/<%= index[0] %>" class="selected-list">
+    <% } else { %>
+      <a href="/list/<%= index[0] %>">
+    <% } %>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
