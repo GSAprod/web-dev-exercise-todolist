@@ -261,6 +261,7 @@ h2 {
 
   .titlebar-left {
     margin-bottom: 2em;
+    padding-top: 2em;
   }
 
   .titlebar-left > svg {
@@ -307,6 +308,30 @@ h2 {
     display: relative;
   }
 
+  .no-tasks {
+    position: initial;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-weight: normal;
+    color: initial;
+  }
+
+  .no-tasks > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .no-tasks svg {
+    width: 1.5em;
+    height: auto;
+  }
+
   .desktop-listname {
     display: initial;
     padding-bottom: 0.5em;
@@ -319,8 +344,10 @@ h2 {
 
   .add-task-container {
     position: sticky;
+    box-sizing: border-box;
     left: 1em;
     right: 1em;
     bottom: 1em;
+    margin-top: 1em;
   }
 }
