@@ -1,5 +1,7 @@
 import express from "express";
 import bodyparser from "body-parser";
+import mongoose from "mongoose";
+import * as Schemas from "./schema.js";
 import { v4 as uuidv4 } from "uuid";
 import { todoLists } from "./initialdata.js";
 
@@ -8,18 +10,21 @@ const port = 3000;
 
 const listIndex = []
 
+await mongoose.connect('mongodb://localhost:27017/todolistDB');
+
+
 app.use(bodyparser.urlencoded({ "extended": true }));
 app.use(express.static("public"));
 app.use("/list", express.static("public"));
 
-function indexLists() {
+async function indexLists() {
+    const listsCollection = await Schemas.List.find({}, { name: 1, _id: 1 });
+    console.log(listsCollection); // not returning ids of lists
+
     Object.keys(todoLists).forEach((id) => {
         listIndex.push([id, todoLists[id]['name']])
     });
 }
-
-indexLists();
-
 
 app.get("/", (req, res) => {
   res.redirect("/list/0");
@@ -94,6 +99,7 @@ app.post("/update", (req, res) => {
   res.redirect(`/list/${listId}`);
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
+  await indexLists();
   console.log(`Server running on port ${port}`);
 });
