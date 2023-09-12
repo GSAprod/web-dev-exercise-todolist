@@ -28,8 +28,10 @@ app.get("/", (req, res) => {
 
 app.get("/list/:listid", async (req, res) => {
     let listId = req.params['listid'];
-    if (todoLists[listId] === undefined) {
+    console.log(listId)
+    if (await Schemas.List.countDocuments({ _id: listId }) === 0) {
       res.sendStatus(404);
+      return
     }
 
     let listDetails = await Schemas.List.findOne({ _id: listId });
@@ -38,15 +40,20 @@ app.get("/list/:listid", async (req, res) => {
     res.render("index.ejs", { listId: listId, listDetails: listDetails, listIndex: listIndex })
 })
 
-app.post("/add-list", (req, res) => {
+app.post("/add-list", async (req, res) => {
     let listName = req.body["list-name"];
     let listId = uuidv4();
+    while( await Schemas.List.countDocuments({ _id: listId} ) !== 0) listId = uuidv4();
 
-    
-    while (todoLists[listId] != null) listId = uuidv4();
-    todoLists[listId] = { "name": listName, "tasks": {} };
-    listIndex.push([ listId, listName ]);
+    console.log("dfdjfkgj")
+    let newList = new Schemas.List({
+      _id: listId,
+      name: listName,
+      tasks: []
+    })
 
+    await newList.save();
+    indexLists();
     res.redirect(`/list/${listId}`);
 })
 
