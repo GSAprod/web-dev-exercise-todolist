@@ -8,7 +8,7 @@ import { todoLists } from "./initialdata.js";
 const app = express();
 const port = 3000;
 
-const listIndex = []
+var listIndex = []
 
 await mongoose.connect('mongodb://localhost:27017/todolistDB');
 
@@ -18,12 +18,8 @@ app.use(express.static("public"));
 app.use("/list", express.static("public"));
 
 async function indexLists() {
-    const listsCollection = await Schemas.List.find({}, { name: 1, _id: 1 });
-    console.log(listsCollection); // not returning ids of lists
-
-    Object.keys(todoLists).forEach((id) => {
-        listIndex.push([id, todoLists[id]['name']])
-    });
+    listIndex = await Schemas.List.find({}, { name: 1 });
+    console.log(listIndex); // not returning ids of lists
 }
 
 app.get("/", (req, res) => {
