@@ -26,13 +26,16 @@ app.get("/", (req, res) => {
   res.redirect("/list/0");
 });
 
-app.get("/list/:listid", (req, res) => {
+app.get("/list/:listid", async (req, res) => {
     let listId = req.params['listid'];
     if (todoLists[listId] === undefined) {
       res.sendStatus(404);
     }
 
-    res.render("index.ejs", { listId: listId, listDetails: todoLists[listId], listIndex: listIndex })
+    let listDetails = await Schemas.List.findOne({ _id: listId });
+    console.log(listDetails)
+
+    res.render("index.ejs", { listId: listId, listDetails: listDetails, listIndex: listIndex })
 })
 
 app.post("/add-list", (req, res) => {
