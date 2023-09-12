@@ -20,8 +20,19 @@ async function indexLists() {
     listIndex = await Schemas.List.find({}, { name: 1 });
 }
 
-app.get("/", (req, res) => {
-  res.redirect("/list/0");
+app.get("/", async (req, res) => {
+  let homeList = await Schemas.List.findOne({}, { _id: 1});
+
+  if (homeList === null) {
+    homeList = new Schemas.List({
+      _id: uuidv4(),
+      name: "Home",
+      tasks: []
+    })
+    await homeList.save();
+    indexLists();
+  }
+  res.redirect(`/list/${homeList['_id']}`);
 });
 
 app.get("/list/:listid", async (req, res) => {
