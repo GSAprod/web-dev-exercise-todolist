@@ -1,0 +1,26 @@
+db.lists.insertOne({
+    _id: '0',
+    name: 'Home',
+    tasks: [
+        {
+            _id: '1',
+            name: 'Pick up dry clothes',
+            done: false
+        },
+        {
+            _id: '2',
+            name: 'Prep dinner',
+            done: true
+        },
+        {
+            _id: '3',
+            name: 'Buy bread',
+            done: false
+        },
+        {
+            _id: '4',
+            name: 'Mow the lawn',
+            done: false
+        }
+    ]
+})

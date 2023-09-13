@@ -2,17 +2,17 @@
   <div class="tasks">
     <h2 class="desktop-listname"><%= listDetails.name %></h2>
     <% if (locals.listDetails && Object.keys(listDetails.tasks).length !== 0) {
-    %> <% Object.keys(listDetails.tasks).forEach(taskId => { %> <%# One task %>
+    %> <% listDetails.tasks.forEach(task => { %> <%# One task %>
     <div class="task-item-container">
       <form
-        action="/list/<%= listId %>/toggle-task/<%= taskId %>"
+        action="/list/<%= listId %>/toggle-task/<%= task['_id'] %>"
         method="post">
-        <% if (listDetails.tasks[taskId].done) { %> <%# Check the box depending
+        <% if (task['done']) { %> <%# Check the box depending
         on the task status %>
         <input
           type="checkbox"
-          name="<%= listDetails.tasks[taskId].name %>"
-          id="<%= listDetails.tasks[taskId].name %>"
+          name="<%= task['name'] %>"
+          id="<%= task['_id'] %>"
           onchange="this.form.submit()"
           checked />
 
@@ -20,17 +20,17 @@
         <input
           type="checkbox"
           class="task-check"
-          name="<%= listDetails.tasks[taskId].name %>"
-          id="<%= listDetails.tasks[taskId].name %>"
+          name="<%= task['name'] %>"
+          id="<%= task['name'] %>"
           onchange="this.form.submit()" />
         <% } %>
 
-        <label for="task"><%= listDetails.tasks[taskId].name %></label>
+        <label for="task"><%= task['name'] %></label>
       </form>
 
       <%# Delete button for the task %>
       <form
-        action="/list/<%= listId %>/delete-task/<%= taskId %>"
+        action="/list/<%= listId %>/delete-task/<%= task['_id'] %>"
         method="post">
         <button class="task-delete" onclick="this.form.submit();">
           <svg
