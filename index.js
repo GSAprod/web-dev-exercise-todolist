@@ -3,13 +3,15 @@ import bodyparser from "body-parser";
 import mongoose, { Schema } from "mongoose";
 import * as Schemas from "./schema.js";
 import { v4 as uuidv4 } from "uuid";
+import 'dotenv/config'
 
 const app = express();
 const port = 3000;
 
 var listIndex = []
 
-await mongoose.connect('mongodb://localhost:27017/todolistDB');
+await mongoose.connect(`mongodb://`
+     + `localhost:27017/todolistDB`);
 
 
 app.use(bodyparser.urlencoded({ "extended": true }));
