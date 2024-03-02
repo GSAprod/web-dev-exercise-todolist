@@ -10,8 +10,11 @@ const port = 3000;
 
 var listIndex = []
 
-await mongoose.connect(`mongodb://`
-     + `localhost:27017/todolistDB`);
+await mongoose.connect('mongodb://' + 
+  process.env.MONGODB_USERNAME + ":" +
+  process.env.MONGODB_PASSWORD + "@" +
+  process.env.MONGODB_HOST + ':' +
+  process.env.MONGODB_PORT + '/todolistDB');
 
 
 app.use(bodyparser.urlencoded({ "extended": true }));
@@ -141,5 +144,5 @@ app.post("/update", (req, res) => {
 
 app.listen(port, async () => {
   await indexLists();
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on http://localhost:${port}/`);
 });
