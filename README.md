@@ -18,10 +18,10 @@ You'll also need to [install MongoDB Community Edition](https://www.mongodb.com/
 First, clone this project onto your local machine:
 
 ```
-$ git clone https://github.com/GSAprod/udemy-web-dev-todolist.git
+git clone https://github.com/GSAprod/udemy-web-dev-todolist.git
 ```
 
-Start the `mongod` process and start a `mongosh` in order to configure our database. 
+Start the `mongod` process and start a `mongosh` session in order to configure the database. 
 
 ```
 sudo systemctl start mongod
@@ -43,7 +43,7 @@ db.createUser(
 exit
 ```
 
-Create a duplicate of the `example.env` file, rename it to `.env` and replace the `<fields>` with all necessary values
+Then, create a duplicate of the `example.env` file, rename it to `.env` and replace the `<fields>` with all necessary values
 
 **NOTE:** If unsure about the host and the port, use the values given by default.
 
