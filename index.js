@@ -10,7 +10,6 @@ const port = 3000;
 
 var listIndex = []
 
-console.log(process.env.MONGODB_USERNAME)
 await mongoose.connect('mongodb://' + 
   process.env.MONGODB_USERNAME + ":" +
   process.env.MONGODB_PASSWORD + "@" +
@@ -145,5 +144,5 @@ app.post("/update", (req, res) => {
 
 app.listen(port, async () => {
   await indexLists();
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on http://localhost:${port}/`);
 });
