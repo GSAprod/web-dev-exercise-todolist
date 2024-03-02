@@ -18,7 +18,7 @@ You'll also need to [install MongoDB Community Edition](https://www.mongodb.com/
 First, clone this project onto your local machine:
 
 ```
-git clone https://github.com/GSAprod/udemy-web-dev-todolist.git
+git clone https://github.com/GSAprod/web-dev-exercise-todolist.git
 ```
 
 Start the `mongod` process and start a `mongosh` session in order to configure the database. 
